@@ -81,11 +81,5 @@ const orderSchema = new mongoose.Schema(
   }
 );
 
-/**
- * Statics
- */
 
-/**
- * @typedef order
- */
 module.exports = mongoose.model("order", orderSchema);
