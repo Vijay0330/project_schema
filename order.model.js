@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const orderStatus = [
   "pending",
   "confirmed",
-  "payment_pending",
   "shipped",
   "shipping",
   "delivered",
@@ -20,10 +19,11 @@ const orderSchema = new mongoose.Schema(
       ref: "buyer",
       required: true,
     },
-    product: {
+    product:[ {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
-    },
+      quantity:Number,
+    }],
     status: {
       type: String,
       enum: orderStatus,
@@ -37,7 +37,7 @@ const orderSchema = new mongoose.Schema(
       value: { type: Number, default: 0 },
       currency: { type: String, default: "USD" },
     },
-    shippingCharges: {
+    deliveryCharges: {
       value: { type: Number, default: 0 },
       currency: { type: String, default: "USD" },
     },
@@ -53,10 +53,6 @@ const orderSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    isPaid: {
-      type: Boolean,
-      default: false,
-    },
     shippingAddress: {
       contactName: String,
       zipCode: String,
@@ -67,17 +63,10 @@ const orderSchema = new mongoose.Schema(
       country: String,
       Landmark: String,
       phone: String,
-    },
-    isDeleted: {
-      type: Boolean,
-      default: false,
-    },
+    }
   },
   {
     timestamps: true,
-  },
-  {
-    usePushEach: true,
   }
 );
 

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const productStatus = ['pending','approved', 'rejected'];
+
 
 const productSchema = new Schema({
   name: {
@@ -12,7 +12,7 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
-  minQuantity: {
+  stock: {
     type: Number,
     required: true,
   },
@@ -23,7 +23,15 @@ const productSchema = new Schema({
   subImage: {
     type: Object,
   },
-  price: {
+  originalPrice: {
+    type: Number,
+    required: true,
+  },
+  sellingPrice: {
+    type: Number,
+    required: true,
+  },
+  discountPrice: {
     type: Number,
     required: true,
   },

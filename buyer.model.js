@@ -29,7 +29,7 @@ const buyerSchema = new mongoose.Schema({
     country: String,
     areaCode: Number,
   },
-  operationalAddress: {
+  deliveryAddress: {
     address: String,
     city: String,
     country: String,

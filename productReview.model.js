@@ -1,4 +1,3 @@
-const { get } = require("http");
 const mongoose = require("mongoose");
 
 const productReviewSchema = new mongoose.Schema(
@@ -26,16 +25,9 @@ const productReviewSchema = new mongoose.Schema(
     rating: {
       type: Number,
     },
-    isDeleted: {
-      type: Boolean,
-      default: false,
-    },
   },
   {
     timestamps: true,
-  },
-  {
-    usePushEach: true,
   }
 );
 
